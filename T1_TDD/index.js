@@ -17,9 +17,17 @@
 
 const greet = (name) => {
   if (name instanceof Array) {
+    const splittedNames = [];
+
+    name.forEach((n) => {
+      const auxNames = n.split(", ");
+
+      auxNames.forEach((auxName) => splittedNames.push(auxName));
+    });
+
     let shoutedName;
 
-    const names = name.filter((n) => {
+    const names = splittedNames.filter((n) => {
       if (isUpperCase(n)) {
         shoutedName = n;
         return false;

@@ -45,6 +45,12 @@ describe("Check greet", function () {
       assert.equal("Hello, Amy and Charlotte. AND HELLO BRIAN!", result);
     });
   });
+  describe("Greet with a name as a string containing a comma", function () {
+    it("should return 'Hello, Bob, Charlie, and Dianne.'", function () {
+      let result = greet(["Bob", "Charlie, Dianne"]);
+      assert.equal("Hello, Bob, Charlie, and Dianne.", result);
+    });
+  });
 });
 
 describe("Check isUpperCase function", () => {
