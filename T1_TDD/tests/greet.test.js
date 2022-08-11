@@ -51,6 +51,12 @@ describe("Check greet", function () {
       assert.equal("Hello, Bob, Charlie, and Dianne.", result);
     });
   });
+  describe("Greet with with double quotes surrounding the entry", function () {
+    it("should return 'Hello, Bob and Charlie, Dianne.'", function () {
+      let result = greet(["Bob", '"Charlie, Dianne"']);
+      assert.equal("Hello, Bob and Charlie, Dianne.", result);
+    });
+  });
 });
 
 describe("Check isUpperCase function", () => {

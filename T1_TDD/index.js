@@ -20,9 +20,13 @@ const greet = (name) => {
     const splittedNames = [];
 
     name.forEach((n) => {
-      const auxNames = n.split(", ");
+      let separator = n.startsWith('"') ? undefined : ", ";
 
-      auxNames.forEach((auxName) => splittedNames.push(auxName));
+      const auxNames = n.split(separator);
+
+      auxNames.forEach((auxName) =>
+        splittedNames.push(auxName.replaceAll('"', ""))
+      );
     });
 
     let shoutedName;
