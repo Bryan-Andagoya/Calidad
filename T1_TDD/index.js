@@ -17,20 +17,33 @@
 
 const greet = (name) => {
   if (name instanceof Array) {
-    const names = name;
+    let shoutedName;
 
-    if (name.length === 2) {
-      return `Hello, ${names[0]} and ${names[1]}.`;
-    }
+    const names = name.filter((n) => {
+      if (isUpperCase(n)) {
+        shoutedName = n;
+        return false;
+      } else {
+        return true;
+      }
+    });
 
     let message = "Hello,";
 
-    for (let i = 0; i < names.length; i++) {
-      if (i === names.length - 1) {
-        message += ` and ${names[i]}.`;
-      } else {
-        message += ` ${names[i]},`;
+    if (names.length === 2) {
+      message += ` ${names[0]} and ${names[1]}.`;
+    } else {
+      for (let i = 0; i < names.length; i++) {
+        if (i === names.length - 1) {
+          message += ` and ${names[i]}.`;
+        } else {
+          message += ` ${names[i]},`;
+        }
       }
+    }
+
+    if (shoutedName) {
+      message += ` AND HELLO ${shoutedName}!`;
     }
 
     return message;
