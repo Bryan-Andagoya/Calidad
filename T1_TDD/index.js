@@ -16,9 +16,24 @@
 // Allow the input to escape intentional commas introduced by Requirement 7. These can be escaped in the same manner that CSV is, with double quotes surrounding the entry. For example, when name is ["Bob", "\"Charlie, Dianne\""], then the method should return the string "Hello, Bob and Charlie, Dianne.".
 
 const greet = (name) => {
-  if (name instanceof Array && name.length === 2) {
+  if (name instanceof Array) {
     const names = name;
-    return `Hello, ${names[0]} and ${names[1]}.`;
+
+    if (name.length === 2) {
+      return `Hello, ${names[0]} and ${names[1]}.`;
+    }
+
+    let message = "Hello,";
+
+    for (let i = 0; i < names.length; i++) {
+      if (i === names.length - 1) {
+        message += ` and ${names[i]}.`;
+      } else {
+        message += ` ${names[i]},`;
+      }
+    }
+
+    return message;
   }
 
   return isUpperCase(name)

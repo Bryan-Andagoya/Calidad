@@ -33,6 +33,12 @@ describe("Check greet", function () {
       assert.equal("Hello, Jill and Jane.", result);
     });
   });
+  describe("Greet with more than two names", function () {
+    it("should return 'Hello, Amy, Brian, and Charlotte.'", function () {
+      let result = greet(["Amy", "Brian", "Charlotte"]);
+      assert.equal("Hello, Amy, Brian, and Charlotte.", result);
+    });
+  });
 });
 
 describe("Check isUpperCase function", () => {
