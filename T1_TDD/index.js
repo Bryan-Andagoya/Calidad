@@ -39,16 +39,18 @@ const greetingMessageWithMultipleNames = (names) => {
     }
   });
 
-  let message = "Hello,";
+  let message = "";
 
-  if (names.length === 2) {
-    message += ` ${names[0]} and ${names[1]}.`;
-  } else {
-    for (let i = 0; i < names.length - 1; i++) {
-      message += ` ${names[i]},`;
-    }
-
-    message += ` and ${names[names.length - 1]}.`;
+  switch (names.length) {
+    case 1:
+      message += `Hello, ${names[0]}.`;
+      break;
+    case 2:
+      message += `Hello, ${names[0]} and ${names[1]}.`;
+      break;
+    default:
+      message = greetingMessage(names, "Hello, ", ", and", ".");
+      break;
   }
 
   if (shoutedNames.length !== 0) {
