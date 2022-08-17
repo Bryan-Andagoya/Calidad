@@ -28,11 +28,11 @@ const greet = (name) => {
 const greetingMessageWithMultipleNames = (names) => {
   const splittedNames = scapeSpecialCharsFromNames(names);
 
-  let shoutedName;
+  const shoutedNames = [];
 
   names = splittedNames.filter((n) => {
     if (isUpperCase(n)) {
-      shoutedName = n;
+      shoutedNames.push(n);
       return false;
     } else {
       return true;
@@ -51,8 +51,16 @@ const greetingMessageWithMultipleNames = (names) => {
     message += ` and ${names[names.length - 1]}.`;
   }
 
-  if (shoutedName) {
-    message += ` AND HELLO ${shoutedName}!`;
+  if (shoutedNames.length !== 0) {
+    message += ` AND HELLO ${shoutedNames[0]}`;
+
+    if (shoutedNames.length !== 1) {
+      for (let i = 1; i < shoutedNames.length; i++) {
+        message += ` AND ${shoutedNames[i]}`;
+      }
+    }
+
+    message += `!`;
   }
 
   return message;

@@ -45,6 +45,24 @@ describe("Check greet", function () {
       assert.equal("Hello, Amy and Charlotte. AND HELLO BRIAN!", result);
     });
   });
+  describe("Greet with normal and shouted names", function () {
+    it("should return 'Hello, Amy and Charlotte. AND HELLO ANA AND BRIAN!'", function () {
+      let result = greet(["Amy", "ANA", "BRIAN", "Charlotte"]);
+      assert.equal(
+        "Hello, Amy and Charlotte. AND HELLO ANA AND BRIAN!",
+        result
+      );
+    });
+  });
+  describe("Greet with normal and shouted names", function () {
+    it("should return 'Hello, Amy and Charlotte. AND HELLO ANA, BRIAN, JOSE AND MARIA!'", function () {
+      let result = greet(["Amy", "ANA", "BRIAN", "JOSE", "MARIA", "Charlotte"]);
+      assert.equal(
+        "Hello, Amy and Charlotte. AND HELLO ANA, BRIAN, JOSE AND MARIA!",
+        result
+      );
+    });
+  });
   describe("Greet with a name as a string containing a comma", function () {
     it("should return 'Hello, Bob, Charlie, and Dianne.'", function () {
       let result = greet(["Bob", "Charlie, Dianne"]);
