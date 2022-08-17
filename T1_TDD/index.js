@@ -53,17 +53,17 @@ const greetingMessageWithMultipleNames = (names) => {
       break;
   }
 
-  if (shoutedNames.length !== 0) {
-    message += ` AND HELLO ${shoutedNames[0]}`;
-
-    if (shoutedNames.length !== 1) {
-      message += concatUppercaseNames(shoutedNames);
-    }
-
-    message += `!`;
+  switch (shoutedNames.length) {
+    case 0:
+      return message;
+    case 1:
+      return message + ` AND HELLO ${shoutedNames[0]}!`;
+    default:
+      return (
+        message +
+        ` AND HELLO ${shoutedNames[0] + concatUppercaseNames(shoutedNames)}!`
+      );
   }
-
-  return message;
 };
 
 const scapeSpecialCharsFromNames = (names) => {
