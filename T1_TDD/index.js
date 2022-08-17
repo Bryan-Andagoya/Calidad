@@ -26,17 +26,7 @@ const greet = (name) => {
 };
 
 const greetingMessageWithMultipleNames = (name) => {
-  const splittedNames = [];
-
-  name.forEach((n) => {
-    let separator = n.startsWith('"') ? undefined : ", ";
-
-    const auxNames = n.split(separator);
-
-    auxNames.forEach((auxName) =>
-      splittedNames.push(auxName.replaceAll('"', ""))
-    );
-  });
+  const splittedNames = scapeSpecialCharsFromNames(name);
 
   let shoutedName;
 
@@ -66,6 +56,22 @@ const greetingMessageWithMultipleNames = (name) => {
   }
 
   return message;
+};
+
+const scapeSpecialCharsFromNames = (names) => {
+  const splittedNames = [];
+
+  names.forEach((n) => {
+    let separator = n.startsWith('"') ? undefined : ", ";
+
+    const auxNames = n.split(separator);
+
+    auxNames.forEach((auxName) =>
+      splittedNames.push(auxName.replaceAll('"', ""))
+    );
+  });
+
+  return splittedNames;
 };
 
 const isUpperCase = (string) => /^[A-Z]+$/.test(string);
