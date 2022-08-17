@@ -25,12 +25,12 @@ const greet = (name) => {
     : `Hello, ${name || "my friend"}.`;
 };
 
-const greetingMessageWithMultipleNames = (name) => {
-  const splittedNames = scapeSpecialCharsFromNames(name);
+const greetingMessageWithMultipleNames = (names) => {
+  const splittedNames = scapeSpecialCharsFromNames(names);
 
   let shoutedName;
 
-  const names = splittedNames.filter((n) => {
+  names = splittedNames.filter((n) => {
     if (isUpperCase(n)) {
       shoutedName = n;
       return false;
