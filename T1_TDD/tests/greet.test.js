@@ -63,6 +63,15 @@ describe("Check greet", function () {
       );
     });
   });
+  describe("Greet with normal and shouted names", function () {
+    it("should return 'Hello, Amy, Juan, and Charlotte. AND HELLO ANA, BRIAN AND MARIA!'", function () {
+      let result = greet(["Amy", "Juan", "ANA", "BRIAN", "MARIA", "Charlotte"]);
+      assert.equal(
+        "Hello, Amy, Juan, and Charlotte. AND HELLO ANA, BRIAN AND MARIA!",
+        result
+      );
+    });
+  });
   describe("Greet with a name as a string containing a comma", function () {
     it("should return 'Hello, Bob, Charlie, and Dianne.'", function () {
       let result = greet(["Bob", "Charlie, Dianne"]);

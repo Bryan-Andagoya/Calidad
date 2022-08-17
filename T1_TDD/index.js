@@ -60,8 +60,7 @@ const greetingMessageWithMultipleNames = (names) => {
       return message + ` AND HELLO ${shoutedNames[0]}!`;
     default:
       return (
-        message +
-        ` AND HELLO ${shoutedNames[0] + concatUppercaseNames(shoutedNames)}!`
+        message + greetingMessage(shoutedNames, " AND HELLO ", " AND", "!")
       );
   }
 };
@@ -83,20 +82,6 @@ const scapeSpecialCharsFromNames = (names) => {
 };
 
 const isUpperCase = (string) => /^[A-Z]+$/.test(string);
-
-const concatUppercaseNames = (names) => {
-  let message = "";
-
-  let lastIndex = names.length - 1;
-
-  for (let i = 1; i < lastIndex; i++) {
-    message += `, ${names[i]}`;
-  }
-
-  message += ` AND ${names[lastIndex]}`;
-
-  return message;
-};
 
 const greetingMessage = (names, beginPart, lastSeparator, endPart) => {
   let message = beginPart;
