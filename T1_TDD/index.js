@@ -17,53 +17,55 @@
 
 const greet = (name) => {
   if (name instanceof Array) {
-    const splittedNames = [];
-
-    name.forEach((n) => {
-      let separator = n.startsWith('"') ? undefined : ", ";
-
-      const auxNames = n.split(separator);
-
-      auxNames.forEach((auxName) =>
-        splittedNames.push(auxName.replaceAll('"', ""))
-      );
-    });
-
-    let shoutedName;
-
-    const names = splittedNames.filter((n) => {
-      if (isUpperCase(n)) {
-        shoutedName = n;
-        return false;
-      } else {
-        return true;
-      }
-    });
-
-    let message = "Hello,";
-
-    if (names.length === 2) {
-      message += ` ${names[0]} and ${names[1]}.`;
-    } else {
-      for (let i = 0; i < names.length; i++) {
-        if (i === names.length - 1) {
-          message += ` and ${names[i]}.`;
-        } else {
-          message += ` ${names[i]},`;
-        }
-      }
-    }
-
-    if (shoutedName) {
-      message += ` AND HELLO ${shoutedName}!`;
-    }
-
-    return message;
+    return greetingMessageWithMultipleNames(name);
   }
 
   return isUpperCase(name)
     ? `HELLO ${name}!`
     : `Hello, ${name || "my friend"}.`;
+};
+
+const greetingMessageWithMultipleNames = (name) => {
+  const splittedNames = [];
+
+  name.forEach((n) => {
+    let separator = n.startsWith('"') ? undefined : ", ";
+
+    const auxNames = n.split(separator);
+
+    auxNames.forEach((auxName) =>
+      splittedNames.push(auxName.replaceAll('"', ""))
+    );
+  });
+
+  let shoutedName;
+
+  const names = splittedNames.filter((n) => {
+    if (isUpperCase(n)) {
+      shoutedName = n;
+      return false;
+    } else {
+      return true;
+    }
+  });
+
+  let message = "Hello,";
+
+  if (names.length === 2) {
+    message += ` ${names[0]} and ${names[1]}.`;
+  } else {
+    for (let i = 0; i < names.length - 1; i++) {
+      message += ` ${names[i]},`;
+    }
+
+    message += ` and ${names[names.length - 1]}.`;
+  }
+
+  if (shoutedName) {
+    message += ` AND HELLO ${shoutedName}!`;
+  }
+
+  return message;
 };
 
 const isUpperCase = (string) => /^[A-Z]+$/.test(string);
