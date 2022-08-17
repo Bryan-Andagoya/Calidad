@@ -1,5 +1,5 @@
 const assert = require("assert");
-const { greet, isUpperCase } = require("../index");
+const { greet, isUpperCase, greetingMessage } = require("../index");
 
 // new unit test
 describe("Check greet", function () {
@@ -112,6 +112,31 @@ describe("Check isUpperCase function", () => {
     it("should return 'false'", () => {
       let result = isUpperCase("");
       assert.equal(false, result);
+    });
+  });
+});
+
+describe("Check greetingMessage function", () => {
+  describe("Check with lowercase names", () => {
+    it("should return 'Hello, Juan, Mario, and Jose.'", () => {
+      let result = greetingMessage(
+        ["Juan", "Mario", "Jose"],
+        "Hello, ",
+        ", and",
+        "."
+      );
+      assert.equal("Hello, Juan, Mario, and Jose.", result);
+    });
+  });
+  describe("Check with uppercase names", () => {
+    it("should return 'HELLO JUAN, MARIO AND JOSE!'", () => {
+      let result = greetingMessage(
+        ["JUAN", "MARIO", "JOSE"],
+        "HELLO ",
+        " AND",
+        "!"
+      );
+      assert.equal("HELLO JUAN, MARIO AND JOSE!", result);
     });
   });
 });

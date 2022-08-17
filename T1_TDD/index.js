@@ -96,4 +96,15 @@ const concatUppercaseNames = (names) => {
   return message;
 };
 
-module.exports = { greet, isUpperCase };
+const greetingMessage = (names, beginPart, lastSeparator, endPart) => {
+  let message = beginPart;
+  let lastIndex = names.length - 1;
+
+  message += names.slice(0, -1).join(", ");
+
+  message += `${lastSeparator} ${names[lastIndex] + endPart}`;
+
+  return message;
+};
+
+module.exports = { greet, isUpperCase, greetingMessage };
