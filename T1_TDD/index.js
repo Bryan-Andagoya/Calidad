@@ -55,9 +55,7 @@ const greetingMessageWithMultipleNames = (names) => {
     message += ` AND HELLO ${shoutedNames[0]}`;
 
     if (shoutedNames.length !== 1) {
-      for (let i = 1; i < shoutedNames.length; i++) {
-        message += ` AND ${shoutedNames[i]}`;
-      }
+      message += concatUppercaseNames(shoutedNames);
     }
 
     message += `!`;
@@ -83,5 +81,19 @@ const scapeSpecialCharsFromNames = (names) => {
 };
 
 const isUpperCase = (string) => /^[A-Z]+$/.test(string);
+
+const concatUppercaseNames = (names) => {
+  let message = "";
+
+  let lastIndex = names.length - 1;
+
+  for (let i = 1; i < lastIndex; i++) {
+    message += `, ${names[i]}`;
+  }
+
+  message += ` AND ${names[lastIndex]}`;
+
+  return message;
+};
 
 module.exports = { greet, isUpperCase };
